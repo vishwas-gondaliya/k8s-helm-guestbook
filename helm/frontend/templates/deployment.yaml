@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.gb.name }}-deployment
+  labels:
+{{- toYaml .Values.gb.labels | nindent 4 }}
+spec:
+  selector:
+    matchLabels:
+{{- toYaml .Values.gb.labels | nindent 6 }}
+  replicas: 3
+  template:
+    metadata:
+      labels:
+{{- toYaml .Values.gb.labels | nindent 8 }}
+    spec:
+      containers:
+      - name: {{ .Values.gb.name }}
+        image: {{ .Values.gb.image.repository }}:{{ .Values.gb.image.tag }}
+        imagePullPolicy: {{ .Values.gb.image.pullPolicy }}
+        envFrom:
+          - configMapRef:
+              name: {{ .Values.gb.name }}-configmap
+              optional: false
+          - secretRef:
+              name: {{ .Values.gb.name }}-secret
+              optional: false
+        ports:
+        - containerPort: {{ .Values.gb.containerPorts.http }}

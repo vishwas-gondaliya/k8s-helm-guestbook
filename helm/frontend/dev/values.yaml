@@ -1,0 +1,17 @@
+gb:
+  name: guestbook-app
+  labels:
+    app: guestbook
+    env: dev
+    stack: guestbook
+  image:
+    repository: krutipatel15/guestbook-helm-frontend
+    tag: v1
+    pullPolicy: Always
+  replicas: 3
+  configmap:
+    ## KEY: "value"
+    APP_ENV: "dev"
+    BACKEND_URL: "gbapp-backend-service.gb-backend-n.svc.cluster.local"
+  containerPorts:
+      http: 5000

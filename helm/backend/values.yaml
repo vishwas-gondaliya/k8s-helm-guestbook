@@ -1,0 +1,23 @@
+gb:
+  name: gb-app
+  labels:
+    app: gb-app
+    env: dev
+    stack: guestbook
+  image:
+    repository: wordpress
+    tag: latest
+    pullPolicy: Always
+  replicas: 3
+  rollingUpdate:
+    maxSurge: 1
+    maxUnavailable: 1
+  resources:
+    requests:
+      cpu: "150m"
+      memory: "128Mi"
+    limits:
+      cpu: "250m"
+      memory: "256Mi"
+  containerPorts:
+      http: 5001

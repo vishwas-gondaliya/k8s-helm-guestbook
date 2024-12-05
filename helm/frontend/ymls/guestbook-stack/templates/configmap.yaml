@@ -1,0 +1,13 @@
+---
+# Source: guestbook-stack/templates/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: guestbook-app-configmap
+  labels:
+    app: guestbook
+    env: dev
+    stack: guestbook
+data:
+  APP_ENV: "dev"
+  BACKEND_URL: "gbapp-backend-service.gb-backend-n.svc.cluster.local"
