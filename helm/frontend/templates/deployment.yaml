@@ -21,9 +21,6 @@ spec:
         envFrom:
           - configMapRef:
               name: {{ .Values.gb.name }}-configmap
-              optional: false
-          - secretRef:
-              name: {{ .Values.gb.name }}-secret
-              optional: false
+              key: BACKEND_URL
         ports:
-        - containerPort: {{ .Values.gb.containerPorts.http }}
+          - containerPort: {{ .Values.gb.containerPorts.http }}
