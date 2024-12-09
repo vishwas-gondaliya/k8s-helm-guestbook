@@ -1,0 +1,20 @@
+---
+# Source: guestbook-stack/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: guestbook-app-service
+  labels:
+    app: guestbook
+    env: dev
+    stack: guestbook
+spec:
+  ports:
+  - port: 80            # the port on which the service is listening
+    protocol: TCP
+    targetPort: 5000      # the port exposed by Pod (we defined in the deployment as part of `containerPort)
+  type: LoadBalancer
+  selector:
+    app: guestbook
+    env: dev
+    stack: guestbook       # Pod label that service is using to select Pods

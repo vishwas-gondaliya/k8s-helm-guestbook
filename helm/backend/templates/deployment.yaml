@@ -18,12 +18,5 @@ spec:
       - name: {{ .Values.gb.name }}
         image: {{ .Values.gb.image.repository }}:{{ .Values.gb.image.tag }}
         imagePullPolicy: {{ .Values.gb.image.pullPolicy }}
-        envFrom:
-          - configMapRef:
-              name: {{ .Values.gb.name }}-configmap
-              optional: false
-          - secretRef:
-              name: {{ .Values.gb.name }}-secret
-              optional: false
         ports:
         - containerPort: {{ .Values.gb.containerPorts.http }}

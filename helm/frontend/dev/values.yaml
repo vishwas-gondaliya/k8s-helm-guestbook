@@ -11,6 +11,6 @@ gb:
   replicas: 3
   configmap:
     ## KEY: "value"
-    BACKEND_URL: "gbapp-backend-service.gb-backend-n.svc.cluster.local"
+    BACKEND_URL: "http://gbapp-backend-service.gb-backend-n.svc.cluster.local"
   containerPorts:
       http: 5000

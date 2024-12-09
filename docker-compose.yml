@@ -1,11 +1,8 @@
 version: "3.8"
 
 services:
-
   frontend:
-    build:
-      context: ./frontend
-    image: krutipatel15/guestbookapp-frontend:v1
+    image: krutipatel15/guestbook-helm-frontend:v1
     ports:
       - "5000:5000"
     depends_on:
@@ -13,21 +10,18 @@ services:
     deploy:
       replicas: 1
     networks:
-      - guestbook-network
-
+      - guestbook-net
 
   backend:
-    build:
-      context: ./backend
-    image: krutipatel15/guestbookapp-backend:v1
+    image: krutipatel15/guestbook-helm-backend:v1
     deploy:
       replicas: 1
     networks:
-      - guestbook-network
+      - guestbook-net
     ports:
       - "5001:5001"
 
-
 networks:
-  guestbook-network:
-    driver: overlay
+  guestbook-net:
+    driver: overlay  # Ensure overlay driver is specified
+    #external: false   # Do not use an external network; create a swarm-specific network

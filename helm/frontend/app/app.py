@@ -3,9 +3,10 @@ import requests
 import os
 
 app = Flask(__name__)
-BACKEND_URL = os.environ.get('BACKEND_URL', 'http://backend:5001')  # Fallback URL
 
-# BACKEND_URL = "http://backend:5001"
+BACKEND_URL = os.environ.get("BACKEND_URL", "http://backend:5001")
+
+#BACKEND_URL = "http://backend:5001"
 
 @app.route("/", methods=["GET", "POST"])
 def index():
