@@ -8,14 +8,14 @@ services:
     depends_on:
       - backend
     deploy:
-      replicas: 1
+      replicas: 2
     networks:
       - guestbook-net
 
   backend:
     image: krutipatel15/guestbook-helm-backend:v1
     deploy:
-      replicas: 1
+      replicas: 2
     networks:
       - guestbook-net
     ports:
