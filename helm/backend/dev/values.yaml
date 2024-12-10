@@ -8,6 +8,6 @@ gb:
     repository: krutipatel15/guestbook-helm-backend
     tag: v1
     pullPolicy: Always
-  replicas: 3
+  replicas: 1
   containerPorts:
       http: 5001
